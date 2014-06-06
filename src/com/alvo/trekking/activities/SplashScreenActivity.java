@@ -18,7 +18,7 @@ public class SplashScreenActivity extends Activity {
 	
 	private class ThreadInicializacao extends AsyncTask<Void, Void, Void> {
 		
-		private long TIME = 2500;
+		private long TIME = 1200;
 		
 		@Override
 		protected Void doInBackground(Void... params) {

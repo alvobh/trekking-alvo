@@ -74,13 +74,14 @@ public class BussolaFragment extends Fragment implements SensorEventListener {
         // get the angle around the z-axis rotated
         float degree = Math.round(event.values[0]);
 
-        tvHeading.setText("Heading: " + Float.toString(degree) + " degrees");
+        tvHeading.setText("Seguindo: " + Float.toString(degree) + " graus");
 
         // create a rotation animation (reverse turn degree degrees)
         RotateAnimation ra = new RotateAnimation(
                 currentDegree, 
                 -degree,
-                Animation.RELATIVE_TO_SELF, 0.5f, 
+                Animation.RELATIVE_TO_SELF,
+                0.5f, 
                 Animation.RELATIVE_TO_SELF,
                 0.5f);
 

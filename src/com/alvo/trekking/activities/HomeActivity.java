@@ -1,6 +1,9 @@
 package com.alvo.trekking.activities;
 
 import java.util.Locale;
+import java.util.SortedMap;
+import java.util.TreeMap;
+
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,16 +13,15 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.alvo.trekking.R;
 import com.alvo.trekking.fragments.BussolaFragment;
-import com.bugsense.trace.BugSenseHandler;
+import com.alvo.trekking.fragments.DiscussoesFragment;
+import com.alvo.trekking.fragments.PassosFragment;
+import com.alvo.trekking.fragments.VelocidadeFragment;
 
 public class HomeActivity extends ActionBarActivity implements
 		ActionBar.TabListener {
@@ -42,6 +44,8 @@ public class HomeActivity extends ActionBarActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
+		
+
 
 		// Set up the action bar.
 		final ActionBar actionBar = getSupportActionBar();
@@ -51,7 +55,7 @@ public class HomeActivity extends ActionBarActivity implements
 		// primary sections of the activity.
 		mSectionsPagerAdapter = new SectionsPagerAdapter(
 				getSupportFragmentManager());
-
+		
 		// Set up the ViewPager with the sections adapter.
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
@@ -122,37 +126,34 @@ public class HomeActivity extends ActionBarActivity implements
 	 * one of the sections/tabs/pages.
 	 */
 	public class SectionsPagerAdapter extends FragmentPagerAdapter {
+		
+		private SortedMap<Integer,Fragment> tabs;
 
 		public SectionsPagerAdapter(FragmentManager fm) {
 			super(fm);
+			tabs = new TreeMap<Integer, Fragment>();
+			tabs.put(R.string.bussola, new BussolaFragment());
+			tabs.put(R.string.contador, new PassosFragment());
+			tabs.put(R.string.calculadora, new VelocidadeFragment());
+			tabs.put(R.string.discussoes, new DiscussoesFragment());
 		}
 
 		@Override
 		public Fragment getItem(int position) {
-			// getItem is called to instantiate the fragment for the given page.
-			// Return a PlaceholderFragment (defined as a static inner class
-			// below).
-			return new BussolaFragment();			 
+			return (Fragment) tabs.values().toArray()[position];			 
 		}
 
 		@Override
 		public int getCount() {
 			// Show 3 total pages.
-			return 3;
+			return tabs.size();
 		}
 
 		@Override
 		public CharSequence getPageTitle(int position) {
 			Locale l = Locale.getDefault();
-			switch (position) {
-			case 0:
-				return getString(R.string.bussola).toUpperCase(l);
-			case 1:
-				return getString(R.string.contador).toUpperCase(l);
-			case 2:
-				return getString(R.string.calculadora).toUpperCase(l);
-			}
-			return null;
+			int key = (int) tabs.keySet().toArray()[position];
+			return getString(key).toUpperCase(l);
 		}
 	}
 

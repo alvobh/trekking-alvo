@@ -11,7 +11,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"
         android:layout_marginTop="20dp"
-        android:text="Heading: 0.0" />
+        android:text="Seguindo: 0.0" />
 
     <ImageView
         android:id="@+id/imageViewCompass"
@@ -20,5 +20,14 @@
         android:layout_below="@+id/tvHeading"
         android:layout_centerHorizontal="true"
         android:src="@drawable/bussola" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="30dp"
+        android:layout_height="78dp"
+        android:layout_alignTop="@+id/imageViewCompass"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="79dp"
+        android:src="@drawable/pin" />
 
 </RelativeLayout>

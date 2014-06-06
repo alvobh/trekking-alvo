@@ -6,9 +6,9 @@
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
     <string name="action_settings">Settings</string>
-    <string name="bussola">Bússola</string>
-    <string name="contador">Contador</string>
-    <string name="calculadora">Calculadora</string>
-    <string name="discussoes">Discussões</string>
+    <string name="bussola">Navegação</string>
+    <string name="contador">Passos</string>
+    <string name="calculadora">Velocidade</string>
+    <string name="discussoes">BatePapo</string>
 
 </resources>
