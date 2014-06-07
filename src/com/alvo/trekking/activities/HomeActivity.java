@@ -4,10 +4,10 @@ import java.util.Locale;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentManager.OnBackStackChangedListener;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
@@ -21,7 +21,7 @@ import com.alvo.trekking.R;
 import com.alvo.trekking.fragments.BussolaFragment;
 import com.alvo.trekking.fragments.DiscussoesFragment;
 import com.alvo.trekking.fragments.PassosFragment;
-import com.alvo.trekking.fragments.VelocidadeFragment;
+import com.alvo.trekking.fragments.CalculistaFragment;
 
 public class HomeActivity extends ActionBarActivity implements
 		ActionBar.TabListener {
@@ -43,8 +43,7 @@ public class HomeActivity extends ActionBarActivity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_home);
-		
+		setContentView(R.layout.activity_home);		
 
 
 		// Set up the action bar.
@@ -55,6 +54,8 @@ public class HomeActivity extends ActionBarActivity implements
 		// primary sections of the activity.
 		mSectionsPagerAdapter = new SectionsPagerAdapter(
 				getSupportFragmentManager());
+		
+		getSupportFragmentManager().addOnBackStackChangedListener(getListener());
 		
 		// Set up the ViewPager with the sections adapter.
 		mViewPager = (ViewPager) findViewById(R.id.pager);
@@ -134,7 +135,7 @@ public class HomeActivity extends ActionBarActivity implements
 			tabs = new TreeMap<Integer, Fragment>();
 			tabs.put(R.string.bussola, new BussolaFragment());
 			tabs.put(R.string.contador, new PassosFragment());
-			tabs.put(R.string.calculadora, new VelocidadeFragment());
+			tabs.put(R.string.calculadora, new CalculistaFragment());
 			tabs.put(R.string.discussoes, new DiscussoesFragment());
 		}
 
@@ -155,6 +156,24 @@ public class HomeActivity extends ActionBarActivity implements
 			int key = (int) tabs.keySet().toArray()[position];
 			return getString(key).toUpperCase(l);
 		}
+	}
+	
+	private OnBackStackChangedListener getListener() {
+	    OnBackStackChangedListener result = new OnBackStackChangedListener() {
+	        public void onBackStackChanged() {
+	            FragmentManager manager = getSupportFragmentManager();
+	            if (manager != null) {
+	                int backStackEntryCount = manager.getBackStackEntryCount();
+	                if (backStackEntryCount == 0) {
+	                    finish();
+	                }
+	                Fragment fragment = manager.getFragments()
+	                                           .get(backStackEntryCount - 1);
+	                fragment.onResume();
+	            }
+	        }
+	    };
+	    return result;
 	}
 
 }
