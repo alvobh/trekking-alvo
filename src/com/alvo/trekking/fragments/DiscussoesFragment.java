@@ -18,9 +18,9 @@ public class DiscussoesFragment extends Fragment {
 	public DiscussoesFragment() {
 		String[] perguntasTmp = {
 			"Qual é a bússola que você tem usado como guia em suas decisões?",
-			"Qual seu maior sonho? Quantos passos você tem dado por dia em direção a ele?",
-			"Como você tem levado sua vida - como um maratonista, um corredor de regularidade ou um concorrente aos 100m rasos?",
-			"Por onde você tem andado? Pela trilha, em meio as pedras ou em meio aos espinhos?"
+			"Qual seu maior sonho?\n\nQuantos passos você tem dado por dia em direção a ele?",
+			"Como você tem levado sua vida?\n\nComo um maratonista, um corredor de regularidade ou um concorrente aos 100m rasos?",
+			"Por onde você tem andado?\n\nPela trilha, em meio as pedras ou em meio aos espinhos?"
 		};
 		perguntas = perguntasTmp;
 	}

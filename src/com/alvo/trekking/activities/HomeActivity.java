@@ -19,9 +19,10 @@ import android.view.MenuItem;
 
 import com.alvo.trekking.R;
 import com.alvo.trekking.fragments.BussolaFragment;
+import com.alvo.trekking.fragments.CalculadoraFragment;
 import com.alvo.trekking.fragments.DiscussoesFragment;
 import com.alvo.trekking.fragments.PassosFragment;
-import com.alvo.trekking.fragments.CalculistaFragment;
+import com.alvo.trekking.fragments.CronometroFragment;
 
 public class HomeActivity extends ActionBarActivity implements
 		ActionBar.TabListener {
@@ -135,7 +136,8 @@ public class HomeActivity extends ActionBarActivity implements
 			tabs = new TreeMap<Integer, Fragment>();
 			tabs.put(R.string.bussola, new BussolaFragment());
 			tabs.put(R.string.contador, new PassosFragment());
-			tabs.put(R.string.calculadora, new CalculistaFragment());
+			tabs.put(R.string.cronometro, new CronometroFragment());
+			tabs.put(R.string.calculadora, new CalculadoraFragment());
 			tabs.put(R.string.discussoes, new DiscussoesFragment());
 		}
 
