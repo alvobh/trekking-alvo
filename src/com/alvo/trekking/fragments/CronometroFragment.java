@@ -22,6 +22,7 @@ public class CronometroFragment extends Fragment implements OnClickListener{
 	private Chronometer cronometro;
 	
 	private long inicio;
+	private boolean ativo;
 
 	public CronometroFragment() {
 		
@@ -57,6 +58,8 @@ public class CronometroFragment extends Fragment implements OnClickListener{
 	public void onClick(View v) {
 		switch(v.getId()) {
 		case R.id.play:
+			if(!ativo) cronometro.setBase(SystemClock.elapsedRealtime());
+			ativo = true;
 			cronometro.start();
 			break;
 		case R.id.pause:

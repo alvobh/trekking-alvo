@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.alvo.trekking.R;
@@ -14,6 +15,7 @@ import com.alvo.trekking.R;
 public class PassosFragment extends Fragment implements OnClickListener {
 	
 	private Button botao;
+	private ImageButton refresh;
 	private TextView contadorText;
 	private long nPassos;
 	
@@ -29,7 +31,10 @@ public class PassosFragment extends Fragment implements OnClickListener {
 
     	contadorText = (TextView) v.findViewById(R.id.contadorText);
     	botao = (Button) v.findViewById(R.id.botaoContaPassos);
+    	refresh = (ImageButton) v.findViewById(R.id.refreshPassos);
+    	
     	botao.setOnClickListener(this);
+    	refresh.setOnClickListener(this);
     	
     	return v;
     }
@@ -42,11 +47,14 @@ public class PassosFragment extends Fragment implements OnClickListener {
     
     @Override
     public void onClick(View v) {
-      switch (v.getId()) {
+        switch (v.getId()) {
         case R.id.botaoContaPassos:
     		nPassos++;		
     		refreshContador();
             break;
+        case R.id.refreshPassos:
+        	nPassos = 0;
+        	refreshContador();
         }
     }
     public void refreshContador() {
