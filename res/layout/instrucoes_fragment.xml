@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/imagemInstrucao"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/logo" />
+
+    <ImageView
+        android:id="@+id/anteriorInstrucao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/proximaInstrucao"
+        android:src="@drawable/ic_action_previous_item" />
+
+    <ImageView
+        android:id="@+id/proximaInstrucao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_action_next_item" />
+
+</RelativeLayout>

@@ -21,6 +21,7 @@ import com.alvo.trekking.R;
 import com.alvo.trekking.fragments.BussolaFragment;
 import com.alvo.trekking.fragments.CalculadoraFragment;
 import com.alvo.trekking.fragments.DiscussoesFragment;
+import com.alvo.trekking.fragments.InstrucoesFragment;
 import com.alvo.trekking.fragments.PassosFragment;
 import com.alvo.trekking.fragments.CronometroFragment;
 
@@ -139,6 +140,7 @@ public class HomeActivity extends ActionBarActivity implements
 			tabs.put(R.string.cronometro, new CronometroFragment());
 			tabs.put(R.string.calculadora, new CalculadoraFragment());
 			tabs.put(R.string.discussoes, new DiscussoesFragment());
+//			tabs.put(R.string.instrucoes, new InstrucoesFragment());
 		}
 
 		@Override

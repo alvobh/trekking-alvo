@@ -25,7 +25,7 @@ public class CalculadoraFragment extends Fragment implements OnClickListener {
 	EditText expressionText;
 	TextView tvResult;
 
-	float lastResult;
+	String lastResult;
 
 	public CalculadoraFragment() {
 
@@ -38,11 +38,8 @@ public class CalculadoraFragment extends Fragment implements OnClickListener {
 		View v = inflater.inflate(R.layout.calculadora_fragment, container,
 				false);
 
-		// find the elements
 		expressionText = (EditText) v.findViewById(R.id.etNum1);
 		tvResult = (TextView) v.findViewById(R.id.tvResult);	
-		
-//		escondeKeyboard(expressionText);
 		inicializaBotoes(v);
 		
 		return v;
@@ -91,11 +88,15 @@ public class CalculadoraFragment extends Fragment implements OnClickListener {
 		tvResult.setText(lastResult + "");
 	}
 
-	public Float evaluate(String exp) {
-		BigDecimal result = null;
-		Expression expression = new Expression(exp);
-		result = expression.eval();
-		return result.floatValue();
+	public String evaluate(String exp) {
+		try {
+			BigDecimal result = null;
+			Expression expression = new Expression(exp);
+			result = expression.eval();
+			return result.floatValue() + "";			
+		} catch(Exception e) {
+			return "ERRO";
+		}
 	}
 
 	@Override
